@@ -6,11 +6,11 @@ puts "Welcome to the Widget Store!"
 # Ruby does not need a return value, the last expression is the return value of the method
 def ask(question)
   print question
-  gets
+  gets.chomp
 end
 
 answer = ask("How many widgets are you ordering? ")
-puts "You entered #{answer.chomp} widgets"
+puts "You entered #{answer} widgets"
 
 # Calculate total
 
