@@ -10,7 +10,7 @@ def ask(question)
 end
 
 answer = ask("How many widgets are you ordering? ")
-puts answer
+puts "You entered #{answer.chomp} widgets"
 
 # Calculate total
 
