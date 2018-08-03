@@ -10,9 +10,8 @@ def ask(question)
 end
 
 answer = ask("How many widgets are you ordering? ")
-puts "You entered #{answer} widgets"
-
+number = answer.to_i
 # Calculate total
-
+puts "For #{number} widgets, your total is: $#{number * 10}"
 
 # Discount for large orders
