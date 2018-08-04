@@ -9,9 +9,15 @@ def ask(question)
   gets.chomp
 end
 
+# Create a method that will return the total price of widgets
+def price(quantity)
+  quantity*10
+end
+
 answer = ask("How many widgets are you ordering? ")
 number = answer.to_i
 # Calculate total
-puts "For #{number} widgets, your total is: $#{number * 10}"
+total = price(number)
+puts "For #{number} widgets, your total is: $#{total}"
 
 # Discount for large orders
