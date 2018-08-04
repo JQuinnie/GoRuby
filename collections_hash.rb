@@ -22,3 +22,21 @@ p item["brand"]
 p item.has_value?(1)
 p item.value?(1)
 p item.values_at("name", "quantity")
+
+
+# hash methods
+puts "Hash: #{item.inspect}"
+p "Hash length: #{item.length}"
+
+# invert will swap keys and values, but does not change original hash
+p item.invert
+
+# shift will remove first key and value pair
+p item.shift.inspect
+p item
+
+# merge another hash with original
+grocery_item = { "item" => "Bread", "quantity" => 1, "brand" => "Treehouse Bread Company" }
+calories = { "calories" => 100 }
+final_item = grocery_item.merge(calories)
+p final_item
