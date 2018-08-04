@@ -6,5 +6,13 @@ farmers_list = %w(apples oranges tomatoes)
 item = "honey"
 farmers_list = %W(#{item} apples oranges tomatoes)
 
+# append item to array
+grocery_list << "carrots"
+grocery_list.push("potatoes")
+grocery_list += ["celery", "mushroom"]
+
+# add item to the beginning of array
+grocery_list.unshift("cheese")
+
 p grocery_list
 p farmers_list
