@@ -1,18 +1,18 @@
 # array
-grocery_list = ["milk", "egg", "bread"]
+grocery_list = %w[milk egg bread]
 # array of strings
-farmers_list = %w(apples oranges tomatoes)
+farmers_list = %w[apples oranges tomatoes]
 # array of strings with interpolation
-item = "honey"
-farmers_list = %W(#{item} apples oranges tomatoes)
+item = 'honey'
+farmers_list = %W[#{item} apples oranges tomatoes]
 
 # append item to array
-grocery_list << "carrots"
-grocery_list.push("potatoes")
-grocery_list += ["celery", "mushroom"]
+grocery_list << 'carrots'
+grocery_list.push('potatoes')
+grocery_list += %w[celery mushroom]
 
 # add item to the beginning of array
-grocery_list.unshift("cheese")
+grocery_list.unshift('cheese')
 
 p grocery_list
 p farmers_list
@@ -22,7 +22,7 @@ p grocery_list.first
 p grocery_list.last == grocery_list[-1]
 
 # inserting into an array
-grocery_list.insert(3, "broccoli")
+grocery_list.insert(3, 'broccoli')
 p grocery_list
 
 # removing from array (firt item, last item)
@@ -39,6 +39,6 @@ p grocery_list.drop(3)
 p grocery_list.length
 p grocery_list.count
 # count number of times item is in array
-p grocery_list.count("egg")
+p grocery_list.count('egg')
 # does string include item? true/false
-p grocery_list.include?("egg")
+p grocery_list.include?('egg')
