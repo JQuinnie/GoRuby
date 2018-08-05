@@ -4,7 +4,7 @@ def create_list
   name = gets.chomp
 
   hash = { 'name' => name, 'items' => [] }
-  hash
+  return hash
 end
 
 # add item to list
@@ -19,8 +19,22 @@ def add_list_item
   return hash
 end
 
+# print the list
+def print_list(list)
+  puts 'List: #{list["name"]}'
+  puts '----------'
+
+  list['items'].each do |item|
+    puts 'Item: ' + item['name']
+    puts 'Quantity: ' + item['quantity'].to_s
+    puts '----------'
+  end
+end
+
 list = create_list
 puts list.inspect
 list['items'].push(add_list_item)
 
 puts list.inspect
+
+print_list(list)
