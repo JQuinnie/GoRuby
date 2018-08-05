@@ -1,40 +1,49 @@
 # create a list
 def create_list
-  print 'What is the list name? '
+  print "What is the list name? "
   name = gets.chomp
 
-  hash = { 'name' => name, 'items' => [] }
+  hash = {"name" => name, "items" => []}
   return hash
 end
 
 # add item to list
 def add_list_item
-  print 'What is the item called? '
+  print "What is the item called? "
   item_name = gets.chomp
 
-  print 'How many of the item? '
+  print "How many of the item? "
   quantity = gets.chomp.to_i
 
-  hash = { 'name' => item_name, 'quantity' => quantity }
+  hash = {"name" => item_name, "quantity" => quantity}
   return hash
+end
+
+# output print separator
+def print_separator(character = "-")
+  puts character * 50
 end
 
 # print the list
 def print_list(list)
-  puts 'List: #{list["name"]}'
-  puts '----------'
+  puts "List: #{list["name"]}"
+  print_separator()
 
-  list['items'].each do |item|
-    puts 'Item: ' + item['name']
-    puts 'Quantity: ' + item['quantity'].to_s
-    puts '----------'
+  list["items"].each do |item|
+    puts "\tItem: " + item["name"] + "\t\t" +
+         "Quantity: " + item["quantity"].to_s
   end
+  print_separator()
 end
 
 list = create_list
-puts list.inspect
-list['items'].push(add_list_item)
 
-puts list.inspect
+puts "Great! Add some items to your list."
+
+list["items"].push(add_list_item)
+list["items"].push(add_list_item)
+list["items"].push(add_list_item)
+
+puts "Here's your list: \n"
 
 print_list(list)
