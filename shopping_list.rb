@@ -12,9 +12,15 @@ def add_list_item
   print 'What is the item called? '
   item_name = gets.chomp
 
-  hash = { 'name' => name }
-  hash
+  print 'How many of the item? '
+  quantity = gets.chomp.to_i
+
+  hash = { 'name' => item_name, 'quantity' => quantity }
+  return hash
 end
 
 list = create_list
+puts list.inspect
+list['items'].push(add_list_item)
+
 puts list.inspect
