@@ -50,23 +50,46 @@
 # name = get_name()
 # puts "Hi #{name}."
 
-# while loop, does not need the break key word
-answer =''
-while answer !='n'
-  print 'Do you want me to repeat this pointless loop again? (y/n) '
-  answer = gets.chomp.downcase
+# # while loop, does not need the break key word
+# answer =''
+# while answer !='n'
+#   print 'Do you want me to repeat this pointless loop again? (y/n) '
+#   answer = gets.chomp.downcase
+# end
+
+# def print_hello(number_of_times)
+#   i = 0
+#   while i < number_of_times
+#     puts 'hello'
+#     i += 1
+#   end
+# end
+
+# answer_more = 0
+# while answer_more < 5
+#   print "How many times do you want to print 'hello'? (Enter a number greater than 5 to exit) "
+#   answer_more = gets.chomp.to_i
+#   print_hello(answer_more)
+# end
+
+# The until loop will continue to run until a certain condition is met. It's the opposite of the while loop in that while loops run as long as the condition is true, while the until loop will run as long as the condition is false and it exits when the condition becomes true
+
+answer = ""
+until answer == "n"
+  print "Do you want this loop to continue? (y/n) "
+  answer = gets.chomp
 end
 
 def print_hello(number_of_times)
   i = 0
   while i < number_of_times
-    puts 'hello'
+    puts "hello"
     i += 1
   end
 end
 
 answer_more = 0
-while answer_more < 5
+until answer_more >= 5
   print "How many times do you want to print 'hello'? (Enter a number greater than 5 to exit) "
   answer_more = gets.chomp.to_i
   print_hello(answer_more)
