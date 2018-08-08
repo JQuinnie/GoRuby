@@ -20,7 +20,7 @@ array.each do |item|
 end
 
 # hash iteration, the each method is also each_pair
-business = {'name' => 'Treehouse', 'location' => 'Portland, OR'}
+business = { 'name' => 'Treehouse', 'location' => 'Portland, OR' }
 
 business.each do |key, value|
   puts "The hash key is #{key} and the value is #{value}."
@@ -32,4 +32,14 @@ end
 
 business.each_value do |value|
   puts "Value: #{value}"
+end
+
+# Times iterator works with integers
+5.times do
+  puts 'Hello!'
+end
+
+5.times do |item|
+  puts "Hello! #{item + 1}"
+  item += 1
 end
