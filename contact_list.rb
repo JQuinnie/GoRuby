@@ -28,3 +28,17 @@ while answer != 'n'
   contact_list.push(add_contact)
   answer = ask('Add another? (y/n)')
 end
+
+puts '-' * 10
+
+contact_list.each do |contact|
+  puts "Name: #{contact['name']}"
+  # similarly can use,
+  # if contact['phone_numbers'].size > 0
+  unless contact['phone_numbers'].empty?
+    contact['phone_numbers'].each do |phone_number|
+      puts "Phone: #{phone_number}"
+    end
+  end
+  puts '-' * 10
+end
