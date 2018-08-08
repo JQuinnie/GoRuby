@@ -41,5 +41,15 @@ end
 
 5.times do |item|
   puts "Hello! #{item + 1}"
-  item += 1
+end
+
+# for loop is similar to each method, uses a range
+for item in 1..10 do
+  puts "The current item is #{item}."
+end
+
+# program = ['JavaScript', 'Python', 'Ruby'] is same as below
+program = %w(JavaScript Python Ruby)
+for language in program
+  puts "I love to program in #{language}."
 end
