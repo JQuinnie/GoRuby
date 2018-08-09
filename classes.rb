@@ -8,6 +8,9 @@ class Name
     @last_name = last_name
   end
 
+  #def title
+    #@title
+  #end
   attr_reader :title
 
   attr_reader :first_name
