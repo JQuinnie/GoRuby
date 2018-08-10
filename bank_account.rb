@@ -37,6 +37,15 @@ class BankAccount
   def to_s
     "Name: #{name}, Balance: #{sprintf("%0.2f", balance)}"
   end
+
+  def print_register
+    puts "#{name}'s Bank Account"
+    puts "Description\tAmount"
+    @transactions.each do |transaction|
+      puts transaction[:description] + "\t" + sprintf("%0.2f", transaction[:amount])
+    end
+    puts "Balance: #{sprintf("%0.2f", balance)}"
+  end
 end
 
 bank_account = BankAccount.new('client')
@@ -46,3 +55,5 @@ bank_account.credit('Paycheck', 100)
 bank_account.debit('Groceries', 40)
 # print out balance
 puts bank_account
+puts 'Register:'
+bank_account.print_register
