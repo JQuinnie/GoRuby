@@ -8,16 +8,10 @@ class Name
     @last_name = last_name
   end
 
-  #def title
-    #@title
-  #end
-  attr_reader :title
-
-  attr_reader :first_name
-
-  attr_reader :middle_name
-
-  attr_reader :last_name
+  # def title
+    # @title
+  # end
+  attr_reader :title, :first_name, :middle_name, :last_name
 end
 
 name = Name.new('Ms.', 'Jenn', 'N', 'Chu')
