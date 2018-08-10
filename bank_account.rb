@@ -4,6 +4,7 @@ class BankAccount
   def initialize(name)
     @name = name
     @transactions = []
+    add_transaction('Beginning Balance', 0)
   end
 
   # method for adding transaction
