@@ -7,6 +7,16 @@ class BankAccount
     add_transaction('Beginning Balance', 0)
   end
 
+  # create a credit method
+  def credit(description, amount)
+    add_transaction(description, amount)
+  end
+
+  # create a debit method
+  def debit(description, amount)
+    add_transaction(description, -amount)
+  end
+
   # method for adding transaction
   def add_transaction(description, amount)
     @transactions.push(description: description, amount: amount)
@@ -14,5 +24,9 @@ class BankAccount
 end
 
 bank_account = BankAccount.new('client')
-bank_account.add_transaction('Groceries', 40)
+
+# transactions
+bank_account.credit('Paycheck', 100)
+bank_account.debit('Groceries', 40)
+
 puts bank_account.inspect
