@@ -2,6 +2,7 @@
 # Take a 'Name' class to take a variable and share it
 class Name
   def initialize(title, first_name, middle_name, last_name)
+    # @ denotes an instance variable
     @title = title
     @first_name = first_name
     @middle_name = middle_name
