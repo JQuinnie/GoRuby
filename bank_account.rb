@@ -32,7 +32,8 @@ class BankAccount
     return balance
   end
 
-  # to string method
+  # to string method - a convention called by Ruby when object wants to be formatted as a string
+  # when using puts method, internally Ruby is calling to string on it or to_s, the method below will override it
   def to_s
     "Name: #{name}, Balance: #{sprintf("%0.2f", balance)}"
   end
