@@ -11,7 +11,9 @@ class Name
   # def title
     # @title
   # end
-  attr_reader :title, :first_name, :middle_name, :last_name
+  attr_reader :first_name, :middle_name, :last_name
+  # allows attr_reader and attr_writer
+  attr_accessor :title
 end
 
 name = Name.new('Ms.', 'Jenn', 'N', 'Chu')
@@ -19,3 +21,7 @@ puts name.title + ' ' +
      name.first_name + ' ' +
      name.middle_name + ' ' +
      name.last_name
+
+puts "Previous title: #{name.title}"
+name.title = 'Dr.'
+puts "New title: #{name.title}"
