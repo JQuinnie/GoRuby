@@ -35,16 +35,19 @@ class BankAccount
   # to string method - a convention called by Ruby when object wants to be formatted as a string
   # when using puts method, internally Ruby is calling to string on it or to_s, the method below will override it
   def to_s
-    "Name: #{name}, Balance: #{sprintf("%0.2f", balance)}"
+    "Name: #{name}, Balance: #{format("%0.2f", balance)}"
   end
 
   def print_register
     puts "#{name}'s Bank Account"
-    puts "Description\tAmount"
+    puts '-' * 40
+    puts "Description".ljust(30) + "Amount".rjust(10)
     @transactions.each do |transaction|
-      puts transaction[:description] + "\t" + sprintf("%0.2f", transaction[:amount])
+      puts transaction[:description].ljust(30) + format("%0.2f", transaction[:amount]).rjust(10)
     end
-    puts "Balance: #{sprintf("%0.2f", balance)}"
+    puts '-' * 40
+    puts "Balance:".ljust(30) + format("%0.2f", balance).rjust(10)
+    puts '-' * 40
   end
 end
 
@@ -53,6 +56,7 @@ bank_account = BankAccount.new('client')
 # transactions
 bank_account.credit('Paycheck', 100)
 bank_account.debit('Groceries', 40)
+bank_account.debit('Gas', 35.50)
 # print out balance
 puts bank_account
 puts 'Register:'
