@@ -36,18 +36,17 @@
 class Book
   # define attributes, information that all books have
   attr_accessor :title, :author, :pages
+  # initialize method
+  def initialize(title, author, pages)
+    @title = title
+    @author = author
+    @pages = pages
+  end
 end
 
 # An object is an instance of a book class, which will represent an individual book
-book_one = Book.new()
-book_one.title = "The Joy Luck Club"
-book_one.author = "Amy Tan"
-book_one.pages = 350
-
-book_two = Book.new()
-book_two.title = "The Good Earth"
-book_two.author = "Pearl S. Buck"
-book_two.pages = 300
+book_one = Book.new('The Joy Luck Club', 'Amy Tan', 350)
+book_two = Book.new('The Good Earth', 'Pearl S. Buck', 325)
 
 puts book_one.title
 puts book_two.title
