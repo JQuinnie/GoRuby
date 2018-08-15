@@ -42,6 +42,14 @@ class Book
     @author = author
     @pages = pages
   end
+
+  def many_pages?
+    if @pages >= 330
+      puts @title + ' has so many pages.'
+    else
+      puts @title + ' does not have enough pages.'
+    end
+  end
 end
 
 # An object is an instance of a book class, which will represent an individual book
@@ -50,3 +58,6 @@ book_two = Book.new('The Good Earth', 'Pearl S. Buck', 325)
 
 puts book_one.title
 puts book_two.title
+
+book_one.many_pages?
+book_two.many_pages?
