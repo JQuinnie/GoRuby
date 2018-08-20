@@ -1,17 +1,27 @@
+# require file for phone numbers
+require './phone_number.rb'
+
 class Contact
   attr_writer :first_name, :middle_name, :last_name
+  attr_reader :phone_numbers
 
-  def first_name
-    @first_name
+  def initialize
+    @phone_numbers = []
   end
 
-  def middle_name
-    @middle_name
+  # method to add a phone number
+  def add_phone_number(kind, number)
+    phone_number = PhoneNumber.new
+    phone_number.kind = kind
+    phone_number.number = number
+    phone_numbers.push(phone_number)
   end
 
-  def last_name
-    @last_name
-  end
+  attr_reader :first_name
+
+  attr_reader :middle_name
+
+  attr_reader :last_name
 
   def first_last
     first_name + ' ' + last_name
@@ -54,16 +64,17 @@ class Contact
       first_last
     end
   end
+
+  def print_phone_numbers
+    puts 'Phone Numbers'
+    phone_numbers.each { |phone_number| puts phone_number }
+  end
 end
 
 contact_one = Contact.new
 contact_one.first_name = 'Jenn'
 contact_one.middle_name = 'N'
 contact_one.last_name = 'Chu'
-contact_two = Contact.new
-contact_two.first_name = 'Johnny'
-contact_two.last_name = 'Chu'
-
-puts contact_one.to_s
-puts contact_two.to_s('full_name')
-puts contact_one.to_s('last_first')
+contact_one.add_phone_number('Mobile', '678-999-8212')
+puts contact_one.to_s('full_name')
+contact_one.print_phone_numbers
