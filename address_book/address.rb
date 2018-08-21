@@ -17,12 +17,3 @@ class Address
     address
   end
 end
-
-address_one = Address.new
-address_one.kind = "Home"
-address_one.street_1 = "123 Main St."
-address_one.city = "Denver"
-address_one.state = "C0"
-address_one.postal_code = "80222"
-
-puts address_one.to_s('short')
