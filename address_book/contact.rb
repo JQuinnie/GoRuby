@@ -1,12 +1,14 @@
-# require file for phone numbers
+# require file for phone numbers and addresses
 require './phone_number.rb'
+require './address.rb'
 
 class Contact
   attr_writer :first_name, :middle_name, :last_name
-  attr_reader :phone_numbers
+  attr_reader :phone_numbers, :addresses
 
   def initialize
     @phone_numbers = []
+    @addresses = []
   end
 
   # method to add a phone number
@@ -15,6 +17,18 @@ class Contact
     phone_number.kind = kind
     phone_number.number = number
     phone_numbers.push(phone_number)
+  end
+
+  # method to add addresses
+  def add_address(kind, street_1, street_2, city, state, postal_code)
+    address = Address.new
+    address.kind = kind
+    address.street_1 = street_1
+    address.street_2 = street_2
+    address.city = city
+    address.state = state
+    address.postal_code = postal_code
+    addresses.push(address)
   end
 
   attr_reader :first_name
@@ -69,6 +83,11 @@ class Contact
     puts 'Phone Numbers'
     phone_numbers.each { |phone_number| puts phone_number }
   end
+
+  def print_addresses
+    puts "Addresses"
+    addresses.each { |address| puts address.to_s('short') }
+  end
 end
 
 contact_one = Contact.new
@@ -76,5 +95,7 @@ contact_one.first_name = 'Jenn'
 contact_one.middle_name = 'N'
 contact_one.last_name = 'Chu'
 contact_one.add_phone_number('Mobile', '678-999-8212')
+contact_one.add_address('Home', '123 Main St.', '', 'Denver', 'CO', 80222)
 puts contact_one.to_s('full_name')
 contact_one.print_phone_numbers
+contact_one.print_addresses
