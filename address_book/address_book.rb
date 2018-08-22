@@ -27,6 +27,28 @@ class AddressBook
     end
   end
 
+  # search method for phone number
+  def find_by_phone_number(number)
+    results = []
+    # gsub will replace a dash with nothing
+    search = number.gsub('-', '')
+    contacts.each do |contact|
+      # inner loop to loop thru contacts phone numbers
+      contact.phone_numbers.each do |phone_number|
+        if phone_number.number.gsub('-', '').include?(search)
+          results.push(contact)
+        end
+      end
+    end
+    puts "Phone search results (#{search})"
+    results.each do |contact|
+      puts contact.to_s('full_name')
+      contact.print_phone_numbers
+      contact.print_addresses
+      puts "\n"
+    end
+  end
+
   def print_contact_list
     puts 'Contact List'
     contacts.each do |contact|
@@ -48,3 +70,4 @@ address_book.contacts.push(contact_one)
 # address_book.print_contact_list
 
 address_book.find_by_name('n')
+address_book.find_by_phone_number('999')
