@@ -16,6 +16,7 @@ class AddressBook
       puts 'Address Book'
       puts 'a: Add Contact'
       puts 'p: Print Address Book'
+      puts 's: Search'
       puts 'e: Exit'
       print 'Enter your choice: '
       input = gets.chomp.downcase
@@ -24,9 +25,16 @@ class AddressBook
         add_contact
       when 'p'
         print_contact_list
+      when 's'
+        print 'Search term: '
+        search = gets.chomp
+        find_by_name(search)
+        find_by_phone_number(search)
+        find_by_address(search)
       when 'e'
         break
       end
+      puts "\n"
     end
   end
 
