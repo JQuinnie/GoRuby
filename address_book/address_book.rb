@@ -1,4 +1,5 @@
 require './contact'
+require 'yaml'
 
 class AddressBook
   # when used, does not have to use @ sign to refer to each contact
@@ -7,6 +8,24 @@ class AddressBook
   # initializing an instance variable
   def initialize
     @contacts = []
+    # anything that we have saved in file will open into contacts after initialization
+    open
+  end
+
+  # methods for open and save to file to persist data
+  def open
+    # From Ruby standard library, YAML saves Ruby objects into a text based format
+    if File.exist?('contacts.yml')
+      # if file exists than load into contacts what the YAML file has, replace it
+      @contacts = YAML.load_file('contacts.yml')
+    end
+  end
+
+  def save
+    # File.open method, with file name and mode as arguments
+    File.open('contacts.yml', 'w') do |file|
+      file.write(contacts.to_yaml)
+    end
   end
 
   # method to display menu
@@ -32,6 +51,7 @@ class AddressBook
         find_by_phone_number(search)
         find_by_address(search)
       when 'e'
+        save
         break
       end
       puts "\n"
