@@ -9,19 +9,38 @@ class AddressBook
     @contacts = []
   end
 
-# method to display menu
-def run
-  loop do
-    puts 'Address Book'
-    puts 'e: exit'
-    print 'Enter your choice: '
-    input = gets.chomp.downcase
-    case input
-    when 'e'
-      break
+  # method to display menu
+  def run
+    loop do
+      puts '-' * 30
+      puts 'Address Book'
+      puts 'a: Add Contact'
+      puts 'p: Print Address Book'
+      puts 'e: Exit'
+      print 'Enter your choice: '
+      input = gets.chomp.downcase
+      case input
+      when 'a'
+        add_contact
+      when 'p'
+        print_contact_list
+      when 'e'
+        break
+      end
     end
   end
-end
+
+  # method to add contacts to address book
+  def add_contact
+    contact = Contact.new
+    print 'First name: '
+    contact.first_name = gets.chomp
+    print 'Middle name: '
+    contact.middle_name = gets.chomp
+    print 'Last name: '
+    contact.last_name = gets.chomp
+    contacts.push(contact)
+  end
 
   # refactor print results
   def print_results(search, results)
