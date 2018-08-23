@@ -9,6 +9,20 @@ class AddressBook
     @contacts = []
   end
 
+# method to display menu
+def run
+  loop do
+    puts 'Address Book'
+    puts 'e: exit'
+    print 'Enter your choice: '
+    input = gets.chomp.downcase
+    case input
+    when 'e'
+      break
+    end
+  end
+end
+
   # refactor print results
   def print_results(search, results)
     puts search
@@ -72,17 +86,4 @@ class AddressBook
 end
 
 address_book = AddressBook.new
-
-contact_one = Contact.new
-contact_one.first_name = 'Jenn'
-contact_one.middle_name = 'N'
-contact_one.last_name = 'Chu'
-contact_one.add_phone_number('Mobile', '678-999-8212')
-contact_one.add_address('Home', '123 Main St.', '', 'Denver', 'CO', 80222)
-
-address_book.contacts.push(contact_one)
-# address_book.print_contact_list
-
-# address_book.find_by_name('n')
-# address_book.find_by_phone_number('999')
-address_book.find_by_address('Denver')
+address_book.run
