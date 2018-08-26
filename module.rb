@@ -49,3 +49,7 @@ player2 = Player.new("Kenneth", 80)
 
 puts "player1 > player2: %s" % (player1 > player2)
 puts "player1 < player2: %s" % (player1 < player2)
+
+# math module with class methods
+# in irb, > Math::E
+# class method > Math.sqrt(9) or > Math.log(2, 10)
