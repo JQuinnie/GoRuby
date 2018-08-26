@@ -39,3 +39,10 @@ grocery_item = { 'item' => 'Bread', 'quantity' => 1, 'brand' => 'Treehouse Bread
 calories = { 'calories' => 100 }
 final_item = grocery_item.merge(calories)
 p final_item
+
+# additional hash examples, run in irb
+hash = {name: 'Jenn', location: 'Denver'}
+hash.include?(:name) # true
+hash.any?{|key, value| value == 'Jenn'} # true
+hash.all?{|key, value| value == 'Jenn'} # false
+hash.select{|key, value| value.length > 5} # {:location=>'Denver'}
