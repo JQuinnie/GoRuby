@@ -53,3 +53,52 @@ puts "player1 < player2: %s" % (player1 < player2)
 # math module with class methods
 # in irb, > Math::E
 # class method > Math.sqrt(9) or > Math.log(2, 10)
+
+# enumerable module, gives methods to work in Array, Hash such as map, include?, find and more
+class Game
+  include Enumerable
+  attr_accessor :players
+
+  # pretzeling a block
+  def each(&block)
+    players.each(&block)
+  end
+
+  def initialize
+    @players = []
+  end
+
+  def add_player(player)
+    players.push(player)
+  end
+
+  def score
+    score = 0
+    players.each do |player|
+      score += player.score
+    end
+    score
+  end
+end
+
+# creating Player and Game instances
+player3 = Player.new("Nick", 95)
+player4 = Player.new("Craig", 20)
+
+game1 = Game.new
+game1.add_player(player1)
+game1.add_player(player2)
+
+game2 = Game.new
+game2.add_player(player3)
+game2.add_player(player4)
+
+# Is any score over 80 using the any? method
+puts "Game score over 80: #{game1.any?{|player| player.score > 80}}"
+# Use the find method to return an array of items that returns true for the block
+players = game1.find_all{|player| player.score > 70}
+puts 'Players with a score > 80', players.inspect
+# iterate through players on the game instance
+game2.each do |player|
+  puts "Player: #{player.name}, score: #{player.score}"
+end
