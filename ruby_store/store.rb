@@ -1,3 +1,8 @@
+# A simple program that simulates keeping inventory at a small retail store.
+# Module to track inventory and hold inventory methods
+module Inventoryable
+end
+
 class Shirt
   attr_accessor :attributes
 
