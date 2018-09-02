@@ -44,6 +44,7 @@ class Shirt
 end
 
 class Pant
+  include Inventoryable
   attr_accessor :attributes
 
   def initialize(attributes)
@@ -52,6 +53,7 @@ class Pant
 end
 
 class Accessory
+  include Inventoryable
   attr_accessor :attributes
 
   def initialize(attributes)
@@ -59,9 +61,20 @@ class Accessory
   end
 end
 
-shirt1 = Shirt.create(name: 'MTF', size: 'L')
-shirt2 = Shirt.create(name: 'MTF', size: 'M')
-
-shirt1.stock_count = 10
+shirt = Shirt.create(name: "MTF", size: "L")
+shirt.stock_count = 10
+shirt = Shirt.create(name: "MTF2", size: "L")
+shirt = Shirt.create(name: "MTF", size: "M")
+shirt.stock_count = 9
+pant = Pant.create(name: "Jeans", size: "M")
+pant.stock_count = 2
+pant = Pant.create(name: "Jeans", size: "S")
+pant.stock_count = 4
+accessory = Accessory.create(name: "Belt", size: "M")
+accessory.stock_count = 1
+accessory = Accessory.create(name: "Belt", size: "L")
+accessory.stock_count = 1
+accessory = Accessory.create(name: "Necklace")
+accessory.stock_count = 1
 
 puts Shirt.instances.inspect
