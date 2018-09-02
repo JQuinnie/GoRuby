@@ -4,6 +4,7 @@ module Inventoryable
   # tell the class to extend itself with the class methods that are inside the module
   def self.included(klass)
     klass.extend(ClassMethods)
+    klass.extend(Enumerable)
   end
 
   module ClassMethods
@@ -15,6 +16,26 @@ module Inventoryable
 
     def instances
       @instances ||= []
+    end
+    # from the enumerable mixin
+    def each(&block)
+      instances.each(&block)
+    end
+
+    def in_stock_report
+      puts "#{self.to_s} In Stock Report"
+      reportable = instances.select{ |instance| instance.in_stock? }
+      reportable.each do |item|
+        line = []
+        line.push("Item: #{item.attributes[:name]}")
+        line.push("Stock: #{item.stock_count}")
+        # some items don't have a size
+        if item.attributes.include?(:size)
+          line.push("Size: #{item.attributes[:size]}")
+        end
+        puts line.join("\t")
+      end
+      puts "\n"
     end
   end
 
@@ -77,4 +98,6 @@ accessory.stock_count = 1
 accessory = Accessory.create(name: "Necklace")
 accessory.stock_count = 1
 
-puts Shirt.instances.inspect
+Shirt.in_stock_report
+Pant.in_stock_report
+Accessory.in_stock_report
