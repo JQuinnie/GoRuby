@@ -2,6 +2,18 @@
 # Module to track inventory and hold inventory methods
 module Inventoryable
 
+  module ClassMethods
+    def create(attributes)
+      object = new(attributes)
+      instances.push(object)
+      return object
+    end
+
+    def instances
+      @instances ||= []
+    end
+  end
+
   # initialize and set stock_count to 0 if it doesn't exist, if it does, return variable
   def stock_count
     @stock_count ||= 0
@@ -17,6 +29,7 @@ module Inventoryable
 end
 
 class Shirt
+  extend Inventoryable::ClassMethods
   include Inventoryable
   attr_accessor :attributes
 
@@ -41,13 +54,9 @@ class Accessory
   end
 end
 
-shirt1 = Shirt.new(name: "MTF", size: "L")
-shirt2 = Shirt.new(name: "MTF", size: "M")
+shirt1 = Shirt.create(name: "MTF", size: "L")
+shirt2 = Shirt.create(name: "MTF", size: "M")
 
 shirt1.stock_count = 10
 
-puts "Shirt 1 stock count: %s" % shirt1.stock_count
-puts "Shirt 2 stock count: %s" % shirt2.stock_count
-
-puts "Shirt 1 in stock?: %s" % shirt1.in_stock?
-puts "Shirt 2 in stock?: %s" % shirt2.in_stock?
+puts Shirt.instances.inspect
