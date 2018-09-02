@@ -23,7 +23,9 @@ module Inventoryable
     end
 
     def report(title, items)
+      puts '-' * 50
       puts title
+      puts '-' * 50
       items.each do |item|
         line = []
         line.push("Item: #{item.attributes[:name]}")
@@ -34,6 +36,7 @@ module Inventoryable
         end
         puts line.join("\t")
       end
+      puts '-' * 50
       puts "\n"
     end
 
