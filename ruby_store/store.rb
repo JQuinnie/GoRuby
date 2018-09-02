@@ -22,9 +22,27 @@ module Inventoryable
       instances.each(&block)
     end
 
+    # method for items in stock
     def in_stock_report
       puts "#{self.to_s} In Stock Report"
       reportable = instances.select{ |instance| instance.in_stock? }
+      reportable.each do |item|
+        line = []
+        line.push("Item: #{item.attributes[:name]}")
+        line.push("Stock: #{item.stock_count}")
+        # some items don't have a size
+        if item.attributes.include?(:size)
+          line.push("Size: #{item.attributes[:size]}")
+        end
+        puts line.join("\t")
+      end
+      puts "\n"
+    end
+
+    # method for items out of stock
+    def out_of_stock_report
+      puts "#{self.to_s} In Stock Report"
+      reportable = instances.select{ |instance| !instance.in_stock? }
       reportable.each do |item|
         line = []
         line.push("Item: #{item.attributes[:name]}")
@@ -101,3 +119,5 @@ accessory.stock_count = 1
 Shirt.in_stock_report
 Pant.in_stock_report
 Accessory.in_stock_report
+
+Shirt.out_of_stock_report
