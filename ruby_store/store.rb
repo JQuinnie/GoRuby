@@ -22,11 +22,9 @@ module Inventoryable
       instances.each(&block)
     end
 
-    # method for items in stock
-    def in_stock_report
-      puts "#{self.to_s} In Stock Report"
-      reportable = instances.select{ |instance| instance.in_stock? }
-      reportable.each do |item|
+    def report(title, items)
+      puts title
+      items.each do |item|
         line = []
         line.push("Item: #{item.attributes[:name]}")
         line.push("Stock: #{item.stock_count}")
@@ -39,21 +37,18 @@ module Inventoryable
       puts "\n"
     end
 
+    # method for items in stock
+    def in_stock_report
+      title = "#{self.to_s} In Stock Report"
+      reportable = instances.select{ |instance| instance.in_stock? }
+      report(title, reportable)
+    end
+
     # method for items out of stock
     def out_of_stock_report
-      puts "#{self.to_s} In Stock Report"
+      title = "#{self.to_s} In Stock Report"
       reportable = instances.select{ |instance| !instance.in_stock? }
-      reportable.each do |item|
-        line = []
-        line.push("Item: #{item.attributes[:name]}")
-        line.push("Stock: #{item.stock_count}")
-        # some items don't have a size
-        if item.attributes.include?(:size)
-          line.push("Size: #{item.attributes[:size]}")
-        end
-        puts line.join("\t")
-      end
-      puts "\n"
+      report(title, reportable)
     end
   end
 
