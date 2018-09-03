@@ -9,3 +9,14 @@ end
 block_method do
   puts 'This statement is called from the block'
 end
+
+# block arguments
+def get_name
+  print 'Enter your name: '
+  name = gets.chomp
+  yield name # pass in name variable to block
+end
+
+get_name do |name| # name variable passed in
+  puts "That's a cool name, #{name}!"
+end
