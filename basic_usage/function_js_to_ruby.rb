@@ -1,28 +1,30 @@
-# JavaScript
-# Function as Argument
-# Defining a function that requires an argument
-# to be a function that takes 3 arguments.
-# const outerFunction = (innerFunction) => (innerFunction(10, 8 , 3) * 15);
-#
-# First function that takes 3 arguments.
-# const innerFunctionA = (a, b, c) => (a * a + 2 * b + c);
-#
-# Second function that takes 3 arguments.
-# const innerFunctionB = (a, b, c) => (a * b + c);
-#
-# Calling the outer function with the first function that takes 3 arguments
-# const outerResultA = outerFunction(innerFunctionA); // (10 * 10 + 2 * 8 + 3) * 15 => 1785
-#
-# Calling the outer function with the second function that takes 3 arguments
-# const outerResultB = outerFunction(innerFunctionB); // (10 * 8 + 3) * 15 => 1245
-#
-# console.log(outerResultA); // => 1785
-# console.log(outerResultB); // => 1245
-#
-# Function as Return Value
-# const add = (integer) => (anotherInteger) => integer + anotherInteger;
-# const result = add(5)(8); // 5 + 8 = 13
-# console.log(result); // => 13
+=begin
+JavaScript
+Function as Argument
+Defining a function that requires an argument
+to be a function that takes 3 arguments.
+const outerFunction = (innerFunction) => (innerFunction(10, 8 , 3) * 15);
+
+First function that takes 3 arguments.
+const innerFunctionA = (a, b, c) => (a * a + 2 * b + c);
+
+Second function that takes 3 arguments.
+const innerFunctionB = (a, b, c) => (a * b + c);
+
+Calling the outer function with the first function that takes 3 arguments
+const outerResultA = outerFunction(innerFunctionA); // (10 * 10 + 2 * 8 + 3) * 15 => 1785
+
+Calling the outer function with the second function that takes 3 arguments
+const outerResultB = outerFunction(innerFunctionB); // (10 * 8 + 3) * 15 => 1245
+
+console.log(outerResultA); // => 1785
+console.log(outerResultB); // => 1245
+
+Function as Return Value
+const add = (integer) => (anotherInteger) => integer + anotherInteger;
+const result = add(5)(8); // 5 + 8 = 13
+console.log(result); // => 13
+=end
 
 
 # Ruby
