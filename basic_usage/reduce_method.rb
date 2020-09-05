@@ -1,5 +1,7 @@
 # custom reducer function using Method instance
-def sum_reducer(initial_value, current) initial_value + current end
+def sum_reducer(initial_value, current)
+  initial_value + current
+end
 
 def reduce(reducer, initial_value, array)
   value = initial_value
@@ -22,5 +24,4 @@ def reduce_block(initial_value, array)
   value
 end
 
-puts "sum in block is: #{reduce_block(0, [2, 4, 6]) {|initial_value, current| initial_value + current }}"
-
+puts "sum in block is: #{reduce_block(0, [2, 4, 6]) { |initial_value, current| initial_value + current }}"
