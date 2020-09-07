@@ -56,3 +56,37 @@ prices.map(&:to_f)
 # in practice,
 # use a block when calling methods and expect code you are passing in to be run as part of the method
 # use lambdas when you want to store a block of code and use it later, delay execution until later
+
+# Proc is an object that essentially serves as a saved block
+# blocks are part of the syntax of a method call, no way to call a block
+# Procs are objects, an instance of the Proc class, use the call method to call a Proc
+
+# example of block
+evens = [2, 4, 6, 8]
+odds = [1, 3, 5, 7]
+
+square_of_evens = evens.map {|num| num ** 2}
+square_of_odds = odds.map {|num| num ** 2}
+
+p square_of_evens
+p square_of_odds
+
+# example of above with Procs, making it reusable
+squares = Proc.new {|x| x ** 2}
+
+even_squares = evens.map(&squares)
+odd_squares = odds.map(&squares)
+
+# arrays unpacking to simplify map above
+cubes = Proc.new {|x| x ** 3}
+
+even_cubes, odd_cubes = [evens, odds].map {|array| array.map(&cubes)}
+
+p even_squares
+p odd_squares
+p even_cubes
+p odd_cubes
+
+# calling Proc by the call method
+greet = Proc.new {puts 'Hello'}
+greet.call

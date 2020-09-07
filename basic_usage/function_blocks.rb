@@ -1,4 +1,8 @@
 # Blocks are essentially anonymous functions, use and throw away
+# Blocks are snippets of code that are grouped together to be executed later
+
+# Blocks are not an object, connected to a method call, not a method argument/parameter
+# can only be invoked once, does not persist, separates action away from the method
 
 # how to pass one function into another
 # using anon function or block in the native map function
@@ -52,3 +56,34 @@ end
 print get_size
 
 # use blocks when dealing with lists of data in Ruby!
+
+# Block method with yield keyword
+# yield is a way of calling a block
+def my_method
+  puts 'inside my method'
+  yield
+end
+
+my_method do
+  puts 'blocks as arguments'
+end
+
+def greet # block argument
+  puts 'Hi, what is your name?'
+  yield name
+end
+
+greet do |name|
+  puts "Hello #{name}"
+end
+
+# another way of calling blocks, using the call method
+def greet_with_block(question, &my_block)
+  puts question
+  name = gets.chomp
+  my_block.call(name)
+end
+
+greet_with_block('What is your name?') do |name|
+  puts "Hello, #{name}"
+end
